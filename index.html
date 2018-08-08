@@ -337,10 +337,29 @@
 <li>查询字符串。（GET模式的窗体参数，以”?”字符为起点，每个参数以”&amp;”隔开，再以”=”分开参数名称与数据，通常以UTF8的URL编码，避开字符冲突的问题）</li>
 <li>锚点。以”#”字符为起点[2]</li>
 </ol>
-<h2 id="3-DNS英文全称是什么"><a href="#3-DNS英文全称是什么" class="headerlink" title="3. DNS英文全称是什么?"></a>3. DNS英文全称是什么?</h2><p>域名系统（英文：Domain Name System，缩写：DNS）是互联网的一项服务。</p>
-<p>它由服务商提供, 作为将域名和IP地址相互映射的一个分布式数据库，可以让用户通过域名找到IP地址.</p>
-<h3 id="关于DNS有两个命令"><a href="#关于DNS有两个命令" class="headerlink" title="关于DNS有两个命令"></a>关于DNS有两个命令</h3><p><code>nslookup www.baidu.com</code><br><code>ping www.baidu.com</code><br>输入这两个命令都会返回百度的IP地址<br><img src="https://ws1.sinaimg.cn/large/74465b85ly1fu27ltqubvj20fk0ad76f.jpg" alt="nslookup命令执行结果"><br> Server : 你的路由器地址,<br> 接着, 路由器询问DNS服务商, DNS服务商询问百度后, 向你返回距离你最近的百度服务器的IP地址.</p>
-<h3 id="如何修改hosts文件绕过服务商提供的DNS-背下来"><a href="#如何修改hosts文件绕过服务商提供的DNS-背下来" class="headerlink" title="如何修改hosts文件绕过服务商提供的DNS?(背下来)"></a>如何修改hosts文件绕过服务商提供的DNS?(背下来)</h3><p>iterm命令行输入<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">vim ~/etc/hosts</span><br><span class="line">``` </span><br><span class="line">在里面添加</span><br><span class="line">`指定IP` + `空格` + `目标域名`</span><br><span class="line">例如</span><br><span class="line">123.123.123 www.baidu.com</span><br><span class="line">保存并退出</span><br><span class="line"><span class="comment">## 4. HTTP缩写自哪些单词？是什么？</span></span><br><span class="line">HTTP(HyperText Transfer Protocol)</span><br><span class="line">http是超文本传输协议，它教客户端如何请求、服务器如何响应。</span><br><span class="line"></span><br><span class="line"><span class="comment">## 5. Server + Client + HTTP的闭环流程是怎样的? </span></span><br><span class="line">![请求流程示意图](https://ws1.sinaimg.cn/large/74465b85ly1fu13slzs36j21700k0dng.jpg)</span><br><span class="line"></span><br><span class="line">(这个图去掉了DNS的过程)可以比较直观的看出，HTTP的作用就是指导浏览器和服务器如何进行沟通的</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">## 6. 请求的格式是什么?</span></span><br><span class="line">1 动词 路径 协议/协议版本</span><br><span class="line">2 key1: value1</span><br><span class="line">2 key2: value2</span><br><span class="line">        ...</span><br><span class="line">3 /n(即空行)</span><br><span class="line">4 要上传的数据</span><br><span class="line"></span><br><span class="line">**需要注意的点:**</span><br><span class="line">1. 请求最多包含四部分，最少包含三部分。</span><br><span class="line">2. 动词分为 GET POST PUT PATCH DELETE HEAD OPTIONS 等</span><br><span class="line">3. `路径`包含「查询参数」，但不包括「锚点」,即可以在url处输入类似`https://www.baidu.com`后直接输入`/s?wd=helloworld&amp;rsv_spt=1`可以直接响应helloworld的搜索页.</span><br><span class="line">4. 如果你没有写路径，那么路径默认为 `/`</span><br><span class="line">5. 第二部分中某些动词方式下可能有的`Content-Type`,标注了第四部分的格式</span><br><span class="line">6. 注意字母大小写</span><br><span class="line"></span><br><span class="line"><span class="comment">## 请求举例一 : GET请求</span></span><br><span class="line">用curl创造一个请求, 并得到响应</span><br><span class="line"> ```bash</span><br><span class="line"> curl -s -v -H <span class="string">"Johnny: xxx"</span> -- <span class="string">"https://baidu.com"</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-DNS英文全称是什么"><a href="#3-DNS英文全称是什么" class="headerlink" title="3. DNS英文全称是什么?"></a>3. DNS英文全称是什么?</h2><p>域名系统（英文：Domain Name System，缩写：DNS）是互联网的一项服务。<br>它由服务商提供, 作为将域名和IP地址相互映射的一个分布式数据库，可以让用户通过域名找到IP地址.</p>
+<h3 id="关于DNS有两个命令"><a href="#关于DNS有两个命令" class="headerlink" title="关于DNS有两个命令"></a>关于DNS有两个命令</h3><p><code>nslookup www.baidu.com</code><br><code>ping www.baidu.com</code><br>输入这两个命令都会返回百度的IP地址<br>这里拿<code>nslookup</code>举例:</p>
+<p><img src="https://ws1.sinaimg.cn/large/74465b85ly1fu27ltqubvj20fk0ad76f.jpg" alt="nslookup命令执行结果"><br>其中Server是你的路由器地址, </p>
+<p><strong>整体流程:</strong> 路由器询问DNS服务商, DNS服务商询问百度后, 向你返回距离你最近的百度服务器的IP地址.</p>
+<h3 id="背下来-如何修改hosts文件绕过服务商提供的DNS"><a href="#背下来-如何修改hosts文件绕过服务商提供的DNS" class="headerlink" title="(背下来)如何修改hosts文件绕过服务商提供的DNS?"></a>(背下来)如何修改hosts文件绕过服务商提供的DNS?</h3><ol>
+<li>命令行输入 <code>vim ~/etc/hosts</code></li>
+<li>在里面添加 <code>指定IP</code> + <code>空格</code> + <code>目标域名</code><br> 「例如 123.123.123 <a href="http://www.baidu.com」" target="_blank" rel="noopener">www.baidu.com」</a></li>
+<li>保存并退出.</li>
+</ol>
+<h2 id="4-HTTP缩写自哪些单词？是什么？"><a href="#4-HTTP缩写自哪些单词？是什么？" class="headerlink" title="4. HTTP缩写自哪些单词？是什么？"></a>4. HTTP缩写自哪些单词？是什么？</h2><p>HTTP(HyperText Transfer Protocol)<br>http是超文本传输协议，它教客户端如何请求、服务器如何响应。</p>
+<h2 id="5-Server-Client-HTTP的闭环流程是怎样的"><a href="#5-Server-Client-HTTP的闭环流程是怎样的" class="headerlink" title="5. Server + Client + HTTP的闭环流程是怎样的?"></a>5. Server + Client + HTTP的闭环流程是怎样的?</h2><p><img src="https://ws1.sinaimg.cn/large/74465b85ly1fu13slzs36j21700k0dng.jpg" alt="请求流程示意图"></p>
+<p>(这个图去掉了DNS的过程)可以比较直观的看出，HTTP的作用就是指导浏览器和服务器如何进行沟通的</p>
+<h2 id="6-请求的格式是什么"><a href="#6-请求的格式是什么" class="headerlink" title="6. 请求的格式是什么?"></a>6. 请求的格式是什么?</h2><p>1 动词 路径 协议/协议版本<br>2 key1: value1<br>2 key2: value2<br>        …<br>3 /n(即空行)<br>4 要上传的数据</p>
+<p><strong>需要注意的点:</strong></p>
+<ol>
+<li>请求最多包含四部分，最少包含三部分。</li>
+<li>动词分为 GET POST PUT PATCH DELETE HEAD OPTIONS 等</li>
+<li><code>路径</code>包含「查询参数」，但不包括「锚点」,即可以在url处输入类似<code>https://www.baidu.com</code>后直接输入<code>/s?wd=helloworld&amp;rsv_spt=1</code>可以直接响应helloworld的搜索页.</li>
+<li>如果你没有写路径，那么路径默认为 <code>/</code></li>
+<li>第二部分中某些动词方式下可能有的<code>Content-Type</code>,标注了第四部分的格式</li>
+<li>注意字母大小写</li>
+</ol>
+<h2 id="请求举例一-GET请求"><a href="#请求举例一-GET请求" class="headerlink" title="请求举例一 : GET请求"></a>请求举例一 : GET请求</h2><p>用curl创造一个请求, 并得到响应<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -s -v -H <span class="string">"Johnny: xxx"</span> -- <span class="string">"https://baidu.com"</span></span><br></pre></td></tr></table></figure></p>
 <p>默认为 GET请求(背下来)<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">GET / HTTP/1.1          //</span><br><span class="line"><span class="attribute">Host</span>: www.baidu.com     //访问的host主机</span><br><span class="line"><span class="attribute">User-Agent</span>: curl/7.54.0 //UA</span><br><span class="line"><span class="attribute">Accept</span>: */*             //接收所有</span><br><span class="line"><span class="attribute">Johnny</span>: xxx             //该命令自己添加的key-value键值对</span><br></pre></td></tr></table></figure></p>
 <h2 id="请求举例二-POST请求"><a href="#请求举例二-POST请求" class="headerlink" title="请求举例二 : POST请求"></a>请求举例二 : POST请求</h2><p>###第一个POST请求<br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -X POST -s -v -H <span class="string">"Frank: xxx"</span> -- <span class="string">"https://www.baidu.com"</span> //相比GET请求命令,增加了一个-X POST,说明自己是POST请求</span><br></pre></td></tr></table></figure></p>
 <p>请求的内容是(背下来)<br><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">POST / HTTP/1.1     //相比get唯一的改变</span><br><span class="line"><span class="attribute">Host</span>: www.baidu.com</span><br><span class="line"><span class="attribute">User-Agent</span>: curl/7.54.0</span><br><span class="line"><span class="attribute">Accept</span>: */*</span><br><span class="line"><span class="attribute">Johnny</span>: xxx</span><br></pre></td></tr></table></figure></p>
@@ -354,12 +373,18 @@
 <p> {“error”}</p>
 </li>
 </ol>
-<h3 id="响应的格式和需要注意的点"><a href="#响应的格式和需要注意的点" class="headerlink" title="响应的格式和需要注意的点"></a>响应的格式和需要注意的点</h3><p>1 协议/版本号 状态码 状态解释<br>2 Key1: value1<br>2 Key2: value2<br>2 Content-Length: 17931<br>2 Content-Type: text/html<br>3<br>4 要下载的内容</p>
-<ol>
+<h3 id="响应的格式和需要注意的点"><a href="#响应的格式和需要注意的点" class="headerlink" title="响应的格式和需要注意的点"></a>响应的格式和需要注意的点</h3><pre><code>1 协议/版本号 状态码 状态解释
+2 Key1: value1
+2 Key2: value2
+2 Content-Length: 17931
+2 Content-Type: text/html
+3
+4 要下载的内容
+</code></pre><ol>
 <li>第 2 部分中的 Content-Type 标注了第 4 部分的格式.</li>
 <li>第 2 部分中的 Content-Type 遵循 MIME 规范</li>
 </ol>
-<h2 id="8-响应状态码都有哪类型"><a href="#8-响应状态码都有哪类型" class="headerlink" title="8.响应状态码都有哪类型?"></a>8.响应状态码都有哪类型?</h2><h3 id="这小部分背下来"><a href="#这小部分背下来" class="headerlink" title="(这小部分背下来)"></a>(这小部分背下来)</h3><p>状态吗就是服务器对浏览器(客户端)说的话：</p>
+<h2 id="8-响应状态码都有哪类型"><a href="#8-响应状态码都有哪类型" class="headerlink" title="8.响应状态码都有哪类型?"></a>8.响应状态码都有哪类型?</h2><h3 id="这小部分背下来"><a href="#这小部分背下来" class="headerlink" title="(这小部分背下来)"></a>(这小部分背下来)</h3><p>状态码就是服务器对浏览器(客户端)说的话：</p>
 <ul>
 <li>1xx 不常用</li>
 <li>2xx 成功</li>
@@ -419,7 +444,9 @@
 <li>打开 Network</li>
 <li>地址栏输入网址</li>
 <li>在 Network 点击，查看 request，点击「view source」</li>
-<li>如果有请求的第四部分，那么在 FormData 或 Payload 里面可以看到.<h3 id="查看响应"><a href="#查看响应" class="headerlink" title="查看响应"></a>查看响应</h3></li>
+<li>如果有请求的第四部分，那么在 FormData 或 Payload 里面可以看到.</li>
+</ol>
+<h3 id="查看响应"><a href="#查看响应" class="headerlink" title="查看响应"></a>查看响应</h3><ol>
 <li>打开Network</li>
 <li>刷新网址</li>
 <li>选中第一个响应</li>
