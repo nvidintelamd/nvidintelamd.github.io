@@ -1,0 +1,3 @@
+# Nvidintelamd's Blog
+made by hexo
+...
